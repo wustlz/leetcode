@@ -3,7 +3,7 @@ package pri.ljw.sum;
 import java.util.Arrays;
 
 /**
- * 最相近的三数之和
+ * Problem_16 最相近的三数之和
  *
  * @author liaojinwei
  */
