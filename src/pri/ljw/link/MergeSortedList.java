@@ -1,7 +1,5 @@
 package pri.ljw.link;
 
-import java.util.stream.Stream;
-
 /**
  * Problem_23  合并K个有序链表
  *
@@ -107,7 +105,7 @@ public class MergeSortedList {
         return head.next;
     }
 
-    private static void print(ListNode listNode) {
+    public static void print(ListNode listNode) {
         ListNode tmp = listNode;
         while (tmp != null) {
             System.out.print(tmp.val + " > ");
@@ -117,11 +115,3 @@ public class MergeSortedList {
     }
 }
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-    }
-}
