@@ -1,4 +1,4 @@
-package pri.ljw.number;
+package pri.ljw.math;
 
 /**
  * problem_69 x的平方根
