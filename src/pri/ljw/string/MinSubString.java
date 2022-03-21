@@ -17,8 +17,47 @@ public class MinSubString {
 //        String s = "A";
 //        String t = "AA";
 //        String result = main.minWindow(s, t);
-        String result = main.minWindow1(s, t);
-        System.out.println(result);
+//        String result = main.minWindow1(s, t);
+//        System.out.println(result);
+        System.out.println(minWindow3(s, t));
+    }
+
+    public static String minWindow3(String s, String t) {
+        if (s == null || t == null || s.length() < t.length()) {
+            return "";
+        }
+        Map<Character, Integer> ori = new HashMap<>();
+        for (char c : t.toCharArray()) {
+            ori.put(c, ori.getOrDefault(c, 0) + 1);
+        }
+        int len = s.length();
+        int left = 0, right = 0, check = 0;
+        int min = Integer.MAX_VALUE, start = 0;
+        Map<Character, Integer> target = new HashMap<>(ori.size());
+        while (right < len) {
+            char c = s.charAt(right++);
+            if (ori.get(c) != null) {
+                Integer tmp = target.getOrDefault(c, 0) + 1;
+                target.put(c, tmp);
+                if (tmp.equals(ori.get(c))) {
+                    check++;
+                }
+            }
+            while (check == ori.size()) {
+                if (min > right - left) {
+                    min = right - left;
+                    start = left;
+                }
+                char cr = s.charAt(left++);
+                if (ori.get(cr) != null) {
+                    if (target.get(cr).equals(ori.get(cr))) {
+                        check--;
+                    }
+                    target.put(cr, target.get(cr) - 1);
+                }
+            }
+        }
+        return min == Integer.MAX_VALUE ? "" : s.substring(start, start + min);
     }
 
     /**
